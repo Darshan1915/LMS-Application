@@ -9,8 +9,8 @@ export default function Footer() {
         <div>
           <div className="flex items-center mb-4">
             {/* Icon using Google Material Icon */}
-            <img src={assets.logoo} alt='Logo' className='w-10 cursor-auto lg:w-24'/>
-            <span className="ml-1 text-xl">LearNet Acadamy</span>
+            <img src={assets.logo} alt='Logo' className='cursor-auto w-50 lg:w-24'/>
+            {/* <span className="ml-1 text-xl">Edemy</span> */}
           </div>
           <p className="max-w-xs leading-relaxed text-gray-400">
             Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.
@@ -32,7 +32,7 @@ export default function Footer() {
           <p className="max-w-xs mb-5 leading-relaxed text-gray-400">
             The latest news, articles, and resources, sent to your inbox weekly.
           </p>
-          <form className="flex max-w-md">
+          <form className="flex max-w-md overflow-auto">
             <input
               type="email"
               placeholder="Enter your email"

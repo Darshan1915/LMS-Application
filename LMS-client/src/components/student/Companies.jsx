@@ -4,7 +4,7 @@ import { assets } from '../../assets/assets'
 function Companies() {
   return (
     <>
-    <div className='flex flex-col items-center justify-center'>
+    <div className='flex flex-col items-center justify-center my-10'>
       <div className='flex p-4 text-sm text-gray-500'>
         <h1>Trusted by learners from </h1>
       </div>

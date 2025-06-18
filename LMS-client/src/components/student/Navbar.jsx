@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { assets } from '../../assets/assets';
-import { Link, useLocation } from 'react-router-dom'; // ✅ import useLocation
+import { Link, useLocation, useNavigate } from 'react-router-dom'; // ✅ import useLocation
 import {useClerk, UserButton, useUser} from '@clerk/clerk-react'
+import { AppContext } from '../../context/AppContext';
 
 
 function Navbar() {
   const location = useLocation(); // ✅ get location object
   const navbarColor = location.pathname === '/course-list'; // ✅ compare like a string
+
+  const navigate = useNavigate();
+  const {isEducator} = useContext(AppContext)
 
   const {openSignIn} = useClerk();
   const {user} = useUser();
@@ -15,14 +19,19 @@ function Navbar() {
     <>
       <div className={`flex items-center justify-between py-5  ${navbarColor ? 'bg-white' : 'bg-blue-200'}`}>
         <div className='ml-28'>
-          <img src={assets.logo} alt='Logo' className='cursor-pointer w-28 lg:w-32' />
+          <img src={assets.logo} 
+          alt='Logo' 
+          className='cursor-pointer w-28 lg:w-32'
+          onClick={()=>navigate('/')}
+          />
         </div>
         <div className='flex items-center gap-4 mr-28'>
-          <div className='flex gap-2'>
+          <div className='hidden gap-2 md:flex '>
             {/* jevvha user logedin asn tevach he disel */}
             { user && <>
-              <button>Become Educator </button>
-            <Link to='/my-enrollments'>My Enrollment</Link>
+              <Link to={'/educator'}> {isEducator ? 'Educator Dashboard' : 'Become Educator'} </Link>
+              |
+              <Link to='/my-enrollments'>My Enrollment</Link>
             </>}
           </div>
           <div>
